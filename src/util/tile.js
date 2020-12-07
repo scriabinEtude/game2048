@@ -33,6 +33,7 @@ export function makeTile(tileList){
 }
 
 export function moveTile({ tileList, x, y }) {
+    console.log(x, y)
     assert(x === 0 || y === 0, '');
     const isMoveY = y !== 0;
     const isMinus = x + y < 0;
@@ -103,7 +104,9 @@ export function moveTile({ tileList, x, y }) {
         tile.y = sorted[i].y;
         tile.isMerged = true;
         tile.value = sorted[i].value * 2;
+
         newTileList.push(tile);
+
         sorted[i].isDisabled = true;
         sorted[i + 1].isDisabled = true;
         if (isMoveY) {
