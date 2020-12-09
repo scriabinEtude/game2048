@@ -1,4 +1,4 @@
-import createReducer from './redux-helper'
+import {createReducer} from './redux-helper'
 
 export default function createItemsLogic(name){
     const ADD = `${name}/ADD`
