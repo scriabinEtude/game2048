@@ -21,3 +21,8 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# live
+/live/node_modules
+/whois/node_modules
+/whois/server/node_modules
