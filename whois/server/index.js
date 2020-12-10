@@ -103,6 +103,7 @@ app.get('/auth/user', (req, res) => {
 app.post('/auth/login', (req, res) => {
   setTimeout(() => {
     const { name } = req.body;
+    console.log(req.body)
     db.all(`SELECT * FROM user where name='${name}'`, [], (err, rows) => {
       if (err) {
         throw err;
