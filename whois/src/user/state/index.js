@@ -3,13 +3,16 @@ import {
     createSetValueAction,
     setValueReducer,
     FETCH_KEY,
+    NOT_IMMUTABLE,
 } from '../../common/redux-helper'
 
 export const Types = {
     SetValue : 'user/SetValue',
     FetchUser : 'user/FetchUser',
     FetchUpdateUser : 'user/FetchUpdateUser',
-    FetchUserHistory: 'user/FetchUserHistory'
+    FetchUserHistory: 'user/FetchUserHistory',
+    AddHistory : 'user/AddHistory',
+    Initialize : 'user/Initialize'
 }
 
 export const actions = {
@@ -22,7 +25,9 @@ export const actions = {
         value,
         [FETCH_KEY] : fetchKey
     }),
-    fetchUserHistory: name => ({type:Types.FetchUserHistory, name})
+    fetchUserHistory: name => ({type:Types.FetchUserHistory, name}),
+    addHistory: history => ({type:Types.AddHistory, history}),
+    initialize: () => ({ type: Types.Initialize, [NOT_IMMUTABLE]: true})
 }
 
 const INITIAL_STATE = {
@@ -30,6 +35,9 @@ const INITIAL_STATE = {
     userHistory: []
 }
 const reducer = createReducer(INITIAL_STATE, {
-    [Types.SetValue] : setValueReducer
+    [Types.SetValue] : setValueReducer,
+    [Types.AddHistory] : (state, action) =>
+        (state.userHistory = [action.history, ...state.userHistory]),
+    [Types.Initialize] : () => INITIAL_STATE
 })
 export default reducer

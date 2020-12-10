@@ -1,5 +1,5 @@
 import { Space, Tag, Timeline, Typography } from 'antd'
-import { diffArrays, diffWords } from 'diff'
+import { diffWords } from 'diff'
 import React from 'react'
 import { Link } from 'react-router-dom'
 
@@ -27,7 +27,7 @@ export default function History({items}) {
                                 </Link>
                             </Tag>
                             <Tag>날짜 : {item.date}</Tag>
-                            <Tag>속성 : {COLUMN_MAP[item.date]}</Tag>
+                            <Tag>속성 : {COLUMN_MAP[item.column]}</Tag>
                         </Space>
                         <Space>
                             {getDiff(item).map((diff, index) => (
