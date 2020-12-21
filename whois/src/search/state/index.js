@@ -7,25 +7,28 @@ import {
 
 //enum
 export const Types = {
-    SetValue : 'search/SetValue',
+    SetValue: 'search/SetValue',
     FetchAutoComplete: 'search/FetchAutoComplete',
-    FetchAllHistory : 'search/FetchAllHistory'
+    FetchAllHistory: 'search/FetchAllHistory'
 }
 export const actions = {
-    setValue : createSetValueAction(Types.SetValue),
-    fetchAutoComplete : keyword => ({
+    setValue: createSetValueAction(Types.SetValue),
+    fetchAutoComplete: keyword => ({
         type: Types.FetchAutoComplete,
         keyword
     }),
-    fetchAllHistory : () => ({type:Types.FetchAllHistory, /*[FETCH_PAGE]:0*/}),
+    fetchAllHistory: page => ({
+        type: Types.FetchAllHistory,
+        page
+    }),
 }
 
 const INITIAL_STATE = {
     keyword: '',
-    autoCompletes : [],
-    history : []
+    autoCompletes: [],
+    history: []
 }
 const reducer = createReducer(INITIAL_STATE, {
-    [Types.SetValue] : setValueReducer
+    [Types.SetValue]: setValueReducer
 })
 export default reducer;
